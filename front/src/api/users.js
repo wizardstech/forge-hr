@@ -3,8 +3,8 @@ import axios from './config';
 const RESOURCE_NAME = '/users';
 
 export default {
-  getAll () {
-    return axios.get(RESOURCE_NAME);
+  getAll (page = 1) {
+    return axios.get(`${RESOURCE_NAME}?page=${page}`);
   },
 
   get (id) {

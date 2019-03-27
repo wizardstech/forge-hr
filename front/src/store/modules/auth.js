@@ -18,7 +18,7 @@ const actions = {
   async fetchJWT ({ commit }, { username, password }) {
     const res = await authApi.getToken(username, password);
     commit('setJWT', await res.data);
-    localStorage.token = await res.data.token;
+    window.localStorage.token = await res.data.token;
   }
 };
 

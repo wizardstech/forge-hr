@@ -72,7 +72,7 @@ export const router = new Router({
         auth: false
       },
       beforeEnter: (to, from, next) => {
-        localStorage.clear();
+        window.localStorage.clear();
         next('/login');
       }
     }
@@ -90,7 +90,7 @@ router.beforeEach(async (to, from, next) => {
       return next();
     } catch (error) {
       if (error.response.data.code === 401) {
-        next({ path: '/login', query: { redirect: to.fullPath } });
+        return next('/login');
       }
     }
   } else {

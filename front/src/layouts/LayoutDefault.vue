@@ -3,7 +3,9 @@
   <el-aside width="200px">
     <el-menu :router=true class="app-container">
     <div class="sidebar-header">
-      <h5> Wizards Technologies </h5>
+      <img src="../../public/favicon.png" class="sidebar-logo">
+      <p class="sidebar-sitename">The Forge</p>
+      <p>Wizards Tech.</p>
     </div>
     <el-menu-item route="/"  index="1">
       Home
@@ -29,8 +31,9 @@
           <template slot="title">Username</template>
           <el-menu-item index="1-1">Profile</el-menu-item>
           <el-menu-item index="1-2">Settings</el-menu-item>
-          <el-menu-item router="/logout" index="1-3">Logout</el-menu-item>
+          <el-menu-item route="/logout" index="1-3">Logout</el-menu-item>
         </el-submenu>
+        <el-menu-item index="1" class="right-menu-el"><BellIcon /></el-menu-item>
       </el-menu>
     </el-header>
     <el-main>
@@ -41,8 +44,13 @@
 </template>
 
 <script>
+import BellIcon from 'vue-material-design-icons/Bell.vue';
+
 export default {
-  name: 'LayoutDefault'
+  name: 'LayoutDefault',
+  components: {
+    BellIcon
+  }
 };
 </script>
 
@@ -52,5 +60,12 @@ export default {
   }
   .sidebar-header{
     margin: 20px;
+  }
+  .sidebar-logo{
+    width: 60px;
+  }
+  .sidebar-sitename{
+    margin-top: 0px;
+    font-weight: 600;
   }
 </style>

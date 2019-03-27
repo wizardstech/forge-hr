@@ -6,12 +6,11 @@
 
 <script>
 import LayoutDefault from '@/layouts/LayoutDefault';
-import usersApi from '@/api/users';
 
 export default {
   name: 'Home',
   components: {
     LayoutDefault
-  },
+  }
 };
 </script>
