@@ -4,7 +4,8 @@ api_platform:
             - '%kernel.project_dir%/src/Entity'
             - '%kernel.project_dir%/config/api_platform' # yaml or xml directory configuration
     formats:
-        jsonapi:  ['application/vnd.api+json']
-        json:     ['application/json']
-        html:     ['text/html']
+        json:
+            mime_types: ['application/json']
+        jsonld:
+            mime_types: ['application/ld+json']
     enable_swagger_ui: true

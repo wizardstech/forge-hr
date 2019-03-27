@@ -3,6 +3,9 @@ import Router from 'vue-router';
 
 import Home from './views/Home.vue';
 import Invoices from './views/Invoices.vue';
+import Users from './views/Users.vue';
+import Absences from './views/Absences.vue';
+import Files from './views/Files.vue';
 import Login from './views/Login.vue';
 
 import authApi from '@/api/auth';
@@ -30,11 +33,36 @@ export const router = new Router({
       }
     },
     {
+      path: '/files',
+      name: 'files',
+      component: Files,
+      meta: {
+        auth: true
+      }
+    },
+    {
+      path: '/absences',
+      name: 'absences',
+      component: Absences,
+      meta: {
+        auth: true
+      }
+    },
+    {
       path: '/login',
       name: 'login',
       component: Login,
       meta: {
         auth: false
+      }
+    },
+    {
+      path: '/users',
+      name: 'users',
+      component: Users,
+      meta: {
+        auth: false,
+        admin: true
       }
     },
     {

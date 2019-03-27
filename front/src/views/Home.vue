@@ -1,7 +1,6 @@
 <template>
   <LayoutDefault>
-  <div>
-  </div>
+  <div> Welcome to <strong>The Forge</strong>, the RH tool for Wizards !</div>
   </LayoutDefault>
 </template>
 
@@ -14,13 +13,5 @@ export default {
   components: {
     LayoutDefault
   },
-  data () {
-    return {
-      users: null
-    };
-  },
-  created () {
-    this.users = usersApi.getAll();
-  }
 };
 </script>
