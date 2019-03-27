@@ -1,14 +1,14 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-
-import Home from './views/Home.vue';
-import Invoices from './views/Invoices.vue';
-import Users from './views/Users.vue';
-import Absences from './views/Absences.vue';
-import Files from './views/Files.vue';
-import Login from './views/Login.vue';
-
 import authApi from '@/api/auth';
+
+import Home from '@/views/Home.vue';
+import Login from '@/views/Login.vue';
+
+import usersRoutes from '@/routes/users';
+import invoicesRoutes from '@/routes/invoices';
+import filesRoutes from '@/routes/files';
+import absencesRoutes from '@/routes/absences';
 
 Vue.use(Router);
 
@@ -16,34 +16,14 @@ export const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    ...usersRoutes,
+    ...invoicesRoutes,
+    ...filesRoutes,
+    ...absencesRoutes,
     {
       path: '/',
       name: 'home',
       component: Home,
-      meta: {
-        auth: true
-      }
-    },
-    {
-      path: '/invoices',
-      name: 'invoices',
-      component: Invoices,
-      meta: {
-        auth: true
-      }
-    },
-    {
-      path: '/files',
-      name: 'files',
-      component: Files,
-      meta: {
-        auth: true
-      }
-    },
-    {
-      path: '/absences',
-      name: 'absences',
-      component: Absences,
       meta: {
         auth: true
       }
@@ -54,15 +34,6 @@ export const router = new Router({
       component: Login,
       meta: {
         auth: false
-      }
-    },
-    {
-      path: '/users',
-      name: 'users',
-      component: Users,
-      meta: {
-        auth: false,
-        admin: true
       }
     },
     {

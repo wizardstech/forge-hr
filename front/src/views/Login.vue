@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import LayoutModal from '../layouts/LayoutModal';
+import LayoutModal from '@/layouts/LayoutModal';
 import { mapActions } from 'vuex';
 
 export default {
