@@ -25,7 +25,7 @@
   </el-aside>
   <el-container>
     <el-header>
-      <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+      <el-menu class="el-menu-demo" mode="horizontal">
         <el-submenu index="1" class="right-menu-el">
           <template slot="title">Username</template>
           <el-menu-item index="1-1">Profile</el-menu-item>

@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import authApi from '@/api/auth';
 
 import Home from '@/views/Home.vue';
+import NotFound from '@/views/errors/NotFound.vue';
 
 import LayoutDefault from '@/layouts/LayoutDefault.vue';
 import LayoutModal from '@/layouts/LayoutModal.vue';
@@ -43,6 +44,10 @@ export const router = new Router({
       children: [
         ...authRoutes
       ]
+    },
+    {
+      path: '*',
+      component: NotFound,
     }
   ]
 });

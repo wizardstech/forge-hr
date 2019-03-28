@@ -1,5 +1,4 @@
 <template>
-  <LayoutModal>
     <el-row justify="center" type="flex" :gutter="20">
     <el-col :span="6">
     <el-card class="box-card">
@@ -17,18 +16,13 @@
     </el-card>
     </el-col>
     </el-row>
-  </LayoutModal>
 </template>
 
 <script>
-import LayoutModal from '@/layouts/LayoutModal';
 import { mapActions } from 'vuex';
 
 export default {
   name: 'Login',
-  components: {
-    LayoutModal
-  },
   data () {
     return {
       form: {

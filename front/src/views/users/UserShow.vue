@@ -11,7 +11,7 @@ export default {
   name: 'UserShow',
   data () {
     return {
-      user: null,
+      user: {},
       errors: null,
       isLoading: false
     };
