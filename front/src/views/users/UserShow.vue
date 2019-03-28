@@ -1,20 +1,14 @@
 <template>
-  <LayoutDefault>
-    <div>
-      Hello, {{ user.username }}
-    </div>
-  </LayoutDefault>
+      <div v-loading=isLoading>
+        Hello, {{ user.username }}
+      </div>
 </template>
 
 <script>
-import LayoutDefault from '@/layouts/LayoutDefault';
 import usersApi from '@/api/users';
 
 export default {
   name: 'UserShow',
-  components: {
-    LayoutDefault
-  },
   data () {
     return {
       user: null,

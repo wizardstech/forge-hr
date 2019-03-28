@@ -11,8 +11,8 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 /**
  * @ORM\Table(name="account")
  * @ORM\Entity
- * @ApiFilter(SearchFilter::class, properties={"username": "exact"})
- * @ApiFilter(OrderFilter::class, properties={"id", "name"}, arguments={"orderParameterName"="order"})
+ * @ApiFilter(SearchFilter::class, properties={"username": "partial"})
+ * @ApiFilter(OrderFilter::class, properties={"id", "username"}, arguments={"orderParameterName"="order"})
  */
 class User implements UserInterface
 {

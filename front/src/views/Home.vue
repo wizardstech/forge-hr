@@ -1,16 +1,12 @@
 <template>
-  <LayoutDefault>
-  <div> Welcome to <strong>The Forge</strong>, the RH tool for Wizards !</div>
-  </LayoutDefault>
+  <div>
+    <div> Welcome to <strong>The Forge</strong>, the RH tool for Wizards !</div>
+    <img src="../assets/logo.png">
+  </div>
 </template>
 
 <script>
-import LayoutDefault from '@/layouts/LayoutDefault';
-
 export default {
-  name: 'Home',
-  components: {
-    LayoutDefault
-  }
+  name: 'Home'
 };
 </script>

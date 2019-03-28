@@ -4,15 +4,15 @@ import UserShow from '@/views/users/UserShow.vue';
 const routes = [
   {
     path: '/users',
-    name: 'users',
+    name: 'users.index',
     component: Users,
     meta: {
       auth: true
     }
   },
   {
-    path: '/user/:id',
-    name: 'user.show',
+    path: '/users/:id',
+    name: 'users.show',
     component: UserShow,
     meta: {
       auth: true

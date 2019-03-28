@@ -9,3 +9,7 @@ api_platform:
         jsonld:
             mime_types: ['application/ld+json']
     enable_swagger_ui: true
+    collection:
+        pagination:
+            client_enabled: true
+            enabled_parameter_name: page

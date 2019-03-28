@@ -3,12 +3,15 @@ import Router from 'vue-router';
 import authApi from '@/api/auth';
 
 import Home from '@/views/Home.vue';
-import Login from '@/views/Login.vue';
+
+import LayoutDefault from '@/layouts/LayoutDefault.vue';
+import LayoutModal from '@/layouts/LayoutModal.vue';
 
 import usersRoutes from '@/routes/users';
 import invoicesRoutes from '@/routes/invoices';
 import filesRoutes from '@/routes/files';
 import absencesRoutes from '@/routes/absences';
+import authRoutes from '@/routes/auth';
 
 Vue.use(Router);
 
@@ -16,36 +19,30 @@ export const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    ...usersRoutes,
-    ...invoicesRoutes,
-    ...filesRoutes,
-    ...absencesRoutes,
     {
-      path: '/',
-      name: 'home',
-      component: Home,
-      meta: {
-        auth: true
-      }
+      component: LayoutDefault,
+      path: '',
+      children: [
+        {
+          path: '/',
+          name: 'home',
+          component: Home,
+          meta: {
+            auth: true
+          }
+        },
+        ...usersRoutes,
+        ...invoicesRoutes,
+        ...filesRoutes,
+        ...absencesRoutes
+      ]
     },
     {
-      path: '/login',
-      name: 'login',
-      component: Login,
-      meta: {
-        auth: false
-      }
-    },
-    {
-      path: '/logout',
-      name: 'logout',
-      meta: {
-        auth: false
-      },
-      beforeEnter: (to, from, next) => {
-        window.localStorage.clear();
-        next('/login');
-      }
+      component: LayoutModal,
+      path: '',
+      children: [
+        ...authRoutes
+      ]
     }
   ]
 });

@@ -1,9 +1,8 @@
 <template>
-<el-container >
+<el-container>
   <el-aside width="200px">
     <el-menu :router=true class="app-container">
     <div class="sidebar-header">
-      <img src="../../public/favicon.png" class="sidebar-logo">
       <p class="sidebar-sitename">The Forge</p>
       <p>Wizards Tech.</p>
     </div>
@@ -33,11 +32,14 @@
           <el-menu-item index="1-2">Settings</el-menu-item>
           <el-menu-item route="/logout" index="1-3">Logout</el-menu-item>
         </el-submenu>
-        <el-menu-item index="1" class="right-menu-el"><BellIcon /></el-menu-item>
+        <el-menu-item index="1" class="right-menu-el">
+            <el-badge is-dot class="item badge-icon"/>
+            <BellIcon />
+        </el-menu-item>
       </el-menu>
     </el-header>
     <el-main>
-      <slot />
+      <router-view />
     </el-main>
   </el-container>
 </el-container>
@@ -67,5 +69,10 @@ export default {
   .sidebar-sitename{
     margin-top: 0px;
     font-weight: 600;
+  }
+  .badge-icon{
+    position: absolute;
+    right: 10px;
+    top: -10px;
   }
 </style>

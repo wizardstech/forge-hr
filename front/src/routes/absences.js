@@ -1,5 +1,4 @@
 import Absences from '@/views/absences/Absences.vue';
-
 const routes = [
   {
     path: '/absences',
