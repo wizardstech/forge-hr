@@ -7,6 +7,10 @@ api:
     path: /api/auth
     controller: App\Controller\AuthController::api
 
+session:
+    path: /api/session
+    controller: App\Controller\AuthController::session
+
 login_check:
     path: /api/login_check
     methods: [POST]

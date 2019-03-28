@@ -11,8 +11,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 /**
  * @ORM\Table(name="account")
  * @ORM\Entity
- * @ApiFilter(SearchFilter::class, properties={"username": "partial"})
- * @ApiFilter(OrderFilter::class, properties={"id", "username"}, arguments={"orderParameterName"="order"})
+ * @ApiFilter(OrderFilter::class, properties={"id", "username", "email"}, arguments={"orderParameterName"="order"})
  */
 class User implements UserInterface
 {
@@ -29,6 +28,11 @@ class User implements UserInterface
      */
     private $username;
     /**
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="string", length=200, unique=true)
+     */
+    private $email;
+    /**
      * @Groups({"write"})
      * @ORM\Column(type="string", length=500)
      */
@@ -44,12 +48,21 @@ class User implements UserInterface
      */
     private $roles = [];
 
+    /**
+     * @Groups({"read", "write"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\File")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    public $avatar;
+
+
     public function __construct($username)
     {
         $this->isActive = true;
         $this->username = $username;
     }
-    public function getUsername()
+
+    public function getUsername(): ?string
     {
         return $this->username;
     }
@@ -57,15 +70,20 @@ class User implements UserInterface
     {
         return null;
     }
-    public function getPassword()
+
+    public function getPassword(): ?string
     {
         return $this->password;
     }
-    public function setPassword($password)
+
+    public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
     }
-    public function getRoles()
+
+    public function getRoles(): ?array
     {
         return $this->roles;
     }
@@ -100,6 +118,30 @@ class User implements UserInterface
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getAvatar(): ?File
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(?File $avatar): self
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }

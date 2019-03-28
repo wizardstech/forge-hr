@@ -35,10 +35,14 @@ export default {
     ...mapActions('auth', [
       'fetchJWT'
     ]),
+    ...mapActions('user', [
+      'fetchUserInfos'
+    ]),
     async submitLogin () {
       try {
         const { username, password } = this.form;
         await this.fetchJWT({ username, password });
+        await this.fetchUserInfos();
         await this.$router.push({ path: '/' });
       } catch (error) {
         this.$message({

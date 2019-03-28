@@ -9,13 +9,13 @@
     <el-menu-item route="/"  index="1">
       Home
     </el-menu-item>
-    <el-menu-item route="/invoices" index="3">
+    <el-menu-item route="/invoices" index="2">
       Invoices
     </el-menu-item>
-    <el-menu-item route="/absences"  index="4">
+    <el-menu-item route="/absences"  index="3">
       Absences
     </el-menu-item>
-    <el-menu-item route="/files"  index="5">
+    <el-menu-item route="/files"  index="4">
       My Files
     </el-menu-item>
     <el-menu-item route="/users"  index="5">
@@ -26,13 +26,16 @@
   <el-container>
     <el-header>
       <el-menu class="el-menu-demo" mode="horizontal">
-        <el-submenu index="1" class="right-menu-el">
-          <template slot="title">Username</template>
+        <el-submenu index="6" class="right-menu-el">
+          <template slot="title">
+            <img class="navbar-avatar" :src="`http://api.test/public/files/${userInfos.avatar}`" />
+            {{ userInfos.username }}
+          </template>
           <el-menu-item index="1-1">Profile</el-menu-item>
           <el-menu-item index="1-2">Settings</el-menu-item>
-          <el-menu-item route="/logout" index="1-3">Logout</el-menu-item>
+          <el-menu-item route="logout" index="1-3">Logout</el-menu-item>
         </el-submenu>
-        <el-menu-item index="1" class="right-menu-el">
+        <el-menu-item index="1-0" class="right-menu-el">
             <el-badge is-dot class="item badge-icon"/>
             <BellIcon />
         </el-menu-item>
@@ -47,12 +50,15 @@
 
 <script>
 import BellIcon from 'vue-material-design-icons/Bell.vue';
-
+import { mapState } from 'vuex';
 export default {
   name: 'LayoutDefault',
   components: {
     BellIcon
-  }
+  },
+  computed: mapState({
+    userInfos: state => state.user.userInfos
+  })
 };
 </script>
 
@@ -74,5 +80,9 @@ export default {
     position: absolute;
     right: 10px;
     top: -10px;
+  }
+  .navbar-avatar{
+    width: 30px;
+    border-radius: 50px;
   }
 </style>

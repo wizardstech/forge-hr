@@ -6,5 +6,8 @@ export default {
   },
   checkToken (username, password) {
     return axios.get('/auth');
+  },
+  getUserInfos () {
+    return axios.get('/session');
   }
 };

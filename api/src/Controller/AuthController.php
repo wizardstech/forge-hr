@@ -15,11 +15,13 @@ class AuthController extends AbstractController
 
         $username = $request->request->get('_username');
         $password = $request->request->get('_password');
+        $email = $request->request->get('_email');
         $role = $request->request->get('_role');
 
         $user = new User($username);
         $user->setPassword($encoder->encodePassword($user, $password));
         $user->setRoles([$role]);
+        $user->setEmail($email);
 
         $em->persist($user);
         $em->flush();
@@ -28,5 +30,11 @@ class AuthController extends AbstractController
     public function api()
     {
         return new Response(json_encode(['auth' => true]));
+    }
+    public function session(){
+        return new Response(json_encode([
+            'username' => $this->getUser()->getUsername(),
+            'avatar' => $this->getUser()->getAvatar()->getContentUrl(),
+        ]));
     }
 }
