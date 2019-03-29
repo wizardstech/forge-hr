@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-table
-      v-loading=isLoading
+      v-loading=pending
       empty-text="No data"
       :data="users">
       <el-table-column
@@ -29,39 +29,28 @@
 </template>
 
 <script>
-import usersApi from '@/api/users';
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: 'Users',
-  data () {
-    return {
-      users: null,
-      errors: null,
-      isLoading: false
-    };
-  },
+  computed: mapState({
+    users: state => state.users.users,
+    pending: state => state.users.pending.users,
+    error: state => state.users.error.users
+  }),
   methods: {
-    async fetchData () {
-      try {
-        this.isLoading = true;
-        const res = await usersApi.getAll(1);
-        this.users = res.data;
-        this.isLoading = false;
-      } catch (e) {
-        this.$message({ showClose: true, message: 'Error fetching users from api', type: 'error' });
-        this.errors = e.response.data.code;
-      }
-    },
+    ...mapActions([
+      "getUsers",
+    ]),
     handleEdit (index, row) {
       this.$router.push({ name: 'users.edit', params: { id: row.id } });
     },
     handleView (index, row) {
       this.$router.push({ name: 'users.show', params: { id: row.id } });
-    }
+    },
   },
-  created () {
-    this.isLoading = true;
-    this.fetchData();
-  }
+  created() {
+    this.getUsers();
+  },
 };
 </script>

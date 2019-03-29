@@ -1,37 +1,26 @@
 <template>
-      <div v-loading=isLoading>
-        Hello, {{ user.username }}
+      <div v-loading:pending>
+        Hello, {{ user.id }}
       </div>
 </template>
 
 <script>
-import usersApi from '@/api/users';
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: 'UserShow',
-  data () {
-    return {
-      user: {},
-      errors: null,
-      isLoading: false
-    };
-  },
+  computed: mapState({
+    user: state => state.users.user,
+    pending: state => state.users.pending.user,
+    error: state => state.users.error.user
+  }),
   methods: {
-    async fetchData () {
-      try {
-        this.isLoading = true;
-        const res = await usersApi.get(1);
-        this.user = res.data;
-        this.isLoading = false;
-      } catch (e) {
-        this.$message({ showClose: true, message: 'Error fetching users from api', type: 'error' });
-        this.errors = e.response.data.code;
-      }
-    }
+    ...mapActions([
+      "getUser",
+    ]),
   },
-  created () {
-    this.isLoading = true;
-    this.fetchData();
-  }
+  created() {
+    this.getUser({ params: { id: 1 } });
+  },
 };
 </script>

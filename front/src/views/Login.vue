@@ -35,7 +35,7 @@ export default {
     ...mapActions('auth', [
       'fetchJWT'
     ]),
-    ...mapActions('user', [
+    ...mapActions('session', [
       'fetchUserInfos'
     ]),
     async submitLogin () {

@@ -57,7 +57,7 @@ export default {
     BellIcon
   },
   computed: mapState({
-    userInfos: state => state.user.userInfos
+    userInfos: state => state.session.userInfos
   })
 };
 </script>

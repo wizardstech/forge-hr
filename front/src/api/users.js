@@ -1,25 +1,33 @@
 import axios from './config';
+import Vapi from "vuex-rest-api";
 
 const RESOURCE_NAME = '/users';
 
-export default {
-  getAll (page = 1) {
-    return axios.get(`${RESOURCE_NAME}?page=${page}`);
-  },
-
-  get (id) {
-    return axios.get(`${RESOURCE_NAME}/${id}`);
-  },
-
-  create (data) {
-    return axios.post(RESOURCE_NAME, data);
-  },
-
-  update (id, data) {
-    return axios.put(`${RESOURCE_NAME}/${id}`, data);
-  },
-
-  delete (id) {
-    return axios.delete(`${RESOURCE_NAME}/${id}`);
-  }
+const options = {
+  axios: axios,
 };
+
+const users = new Vapi({
+  state: {
+      users: [],
+  },
+  ...options,
+  })
+  .get({
+    action: "getUser",
+    property: "user",
+    path: ({id}) => `${RESOURCE_NAME}/${id}`,
+  })
+  .get({
+    action: "getUsers",
+    property: "users",
+    path: () => RESOURCE_NAME
+  })
+  .post({
+    action: "postUser",
+    property: "user",
+    path: (id) => `${RESOURCE_NAME}/${id}`,
+  })
+  .getStore();
+
+export default users;
