@@ -1,32 +1,32 @@
 import axios from './config';
-import Vapi from "vuex-rest-api";
+import Vapi from 'vuex-rest-api';
 
 const RESOURCE_NAME = '/users';
 
 const options = {
-  axios: axios,
+  axios: axios
 };
 
 const users = new Vapi({
   state: {
-      users: [],
+    users: []
   },
-  ...options,
+  ...options
+})
+  .get({
+    action: 'getUser',
+    property: 'user',
+    path: ({ id }) => `${RESOURCE_NAME}/${id}`
   })
   .get({
-    action: "getUser",
-    property: "user",
-    path: ({id}) => `${RESOURCE_NAME}/${id}`,
-  })
-  .get({
-    action: "getUsers",
-    property: "users",
+    action: 'getUsers',
+    property: 'users',
     path: () => RESOURCE_NAME
   })
   .post({
-    action: "postUser",
-    property: "user",
-    path: (id) => `${RESOURCE_NAME}/${id}`,
+    action: 'postUser',
+    property: 'user',
+    path: (id) => `${RESOURCE_NAME}/${id}`
   })
   .getStore();
 

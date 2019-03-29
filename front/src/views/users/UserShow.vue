@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'UserShow',
@@ -16,11 +16,11 @@ export default {
   }),
   methods: {
     ...mapActions([
-      "getUser",
-    ]),
+      'getUser'
+    ])
   },
-  created() {
+  created () {
     this.getUser({ params: { id: 1 } });
-  },
+  }
 };
 </script>

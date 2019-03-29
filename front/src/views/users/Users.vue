@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'Users',
@@ -40,17 +40,17 @@ export default {
   }),
   methods: {
     ...mapActions([
-      "getUsers",
+      'getUsers'
     ]),
     handleEdit (index, row) {
       this.$router.push({ name: 'users.edit', params: { id: row.id } });
     },
     handleView (index, row) {
       this.$router.push({ name: 'users.show', params: { id: row.id } });
-    },
+    }
   },
-  created() {
+  created () {
     this.getUsers();
-  },
+  }
 };
 </script>
