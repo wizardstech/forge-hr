@@ -1,6 +1,8 @@
 <?php
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -44,6 +46,12 @@ class User implements UserInterface
     private $isActive;
 
     /**
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="string")
+     */
+    private $bio;
+
+    /**
      * @ORM\Column(type="json")
      */
     private $roles = [];
@@ -55,11 +63,22 @@ class User implements UserInterface
      */
     public $avatar;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Absence", mappedBy="owner")
+     */
+    public $absences;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Invoice", mappedBy="owner")
+     */
+    public $invoices;
 
     public function __construct($username)
     {
         $this->isActive = true;
         $this->username = $username;
+        $this->absences = new ArrayCollection();
+        $this->invoices = new ArrayCollection();
     }
 
     public function getUsername(): ?string
@@ -142,6 +161,80 @@ class User implements UserInterface
     public function setAvatar(?File $avatar): self
     {
         $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    public function getBio(): ?string
+    {
+        return $this->bio;
+    }
+
+    public function setBio(string $bio): self
+    {
+        $this->bio = $bio;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Absence[]
+     */
+    public function getAbsences(): Collection
+    {
+        return $this->absences;
+    }
+
+    public function addAbsence(Absence $absence): self
+    {
+        if (!$this->absences->contains($absence)) {
+            $this->absences[] = $absence;
+            $absence->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAbsence(Absence $absence): self
+    {
+        if ($this->absences->contains($absence)) {
+            $this->absences->removeElement($absence);
+            // set the owning side to null (unless already changed)
+            if ($absence->getOwner() === $this) {
+                $absence->setOwner(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Invoice[]
+     */
+    public function getInvoices(): Collection
+    {
+        return $this->invoices;
+    }
+
+    public function addInvoice(Invoice $invoice): self
+    {
+        if (!$this->invoices->contains($invoice)) {
+            $this->invoices[] = $invoice;
+            $invoice->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvoice(Invoice $invoice): self
+    {
+        if ($this->invoices->contains($invoice)) {
+            $this->invoices->removeElement($invoice);
+            // set the owning side to null (unless already changed)
+            if ($invoice->getOwner() === $this) {
+                $invoice->setOwner(null);
+            }
+        }
 
         return $this;
     }
