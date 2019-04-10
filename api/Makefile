@@ -28,3 +28,5 @@ reset-dev:
 	@php bin/console doctrine:schema:drop --full-database --force
 	@php bin/console doctrine:schema:update --force
 	@php bin/console doctrine:fixtures:load --quiet
+
+.PHONY: install build prepare dev start update-schema reset-db reset-dev

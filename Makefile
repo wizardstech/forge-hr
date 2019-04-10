@@ -1,6 +1,9 @@
 up:
 	docker-compose up -d --build
 
+down:
+	docker-compose down
+
 run:
 	docker-compose up --build
 
@@ -18,4 +21,4 @@ docker-test:
 docker-analysis:
 	echo "FIXME: Implement linting"
 
-.PHONY: install build prepare analysis test dev start update-schema reset-db docker-up docker-install docker-update docker-test docker-analysis
+.PHONY: up down run docker-install docker-update docker-test docker-analysis
