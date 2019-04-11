@@ -13,14 +13,10 @@ export default {
 
 <style lang="scss">
 
-html {
+html, body, #app {
   margin: 0;
   padding: 0;
-}
-
-body{
-  margin: 0 !important;
-  padding: 0 !important;
+  min-height: 100vh;
 }
 
 #app {
