@@ -14,6 +14,8 @@ import filesRoutes from '@/routes/files';
 import absencesRoutes from '@/routes/absences';
 import authRoutes from '@/routes/auth';
 
+import store from '@/store';
+
 Vue.use(Router);
 
 export const router = new Router({
@@ -55,14 +57,17 @@ export const router = new Router({
 router.beforeEach(async (to, from, next) => {
   if (to.matched.some(record => record.meta.auth)) {
     try {
-      const response = await authApi.checkToken();
-      const { auth } = response.data;
-      if (!auth) {
+      const response = await authApi.getUserInfo();
+      const user = response.data;
+      if (!user || !user.isActive) {
+        await store.dispatch('auth/logout');
         return next('/login');
       }
+      await store.commit('auth/setUser', user);
       return next();
     } catch (error) {
       if (error.response.data.code === 401) {
+        await store.dispatch('auth/logout');
         return next('/login');
       }
     }

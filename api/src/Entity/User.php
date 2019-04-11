@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -7,9 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Annotation\ApiFilter;
-use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+
 /**
  * @ORM\Table(name="account")
  * @ORM\Entity
@@ -85,6 +85,7 @@ class User implements UserInterface
     {
         return $this->username;
     }
+
     public function getSalt()
     {
         return null;
@@ -106,6 +107,7 @@ class User implements UserInterface
     {
         return $this->roles;
     }
+
     public function eraseCredentials()
     {
     }

@@ -1,23 +1,37 @@
 import authApi from '@/api/auth';
 
 const state = {
-  token: ''
+  user: null,
+  token: null
 };
 
 const getters = {
-  getJWT: state => state.token
+  getUser: state => state.user,
+  getToken: state => state.token
 };
 
 const mutations = {
-  setJWT (state, jwtPayload) {
-    state.token = jwtPayload.token;
+  setToken (state, token) {
+    state.token = token;
+  },
+  setUser (state, user) {
+    state.user = user;
   }
 };
 
 const actions = {
-  async fetchJWT ({ commit }, { username, password }) {
+  async login ({ commit }, { username, password }) {
     const res = await authApi.getToken(username, password);
-    commit('setJWT', await res.data);
+    const { token } = res.data;
+    commit('setToken', token);
+  },
+  async fetchUserInfo ({ commit }) {
+    const { data: user } = await authApi.getUserInfo();
+    commit('setUser', user);
+  },
+  logout ({ commit }) {
+    commit('setUser', null);
+    commit('setToken', null);
   }
 };
 

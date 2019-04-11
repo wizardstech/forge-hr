@@ -28,8 +28,8 @@
       <el-menu :router=true class="el-menu-demo" mode="horizontal">
         <el-submenu index="6" class="right-menu-el">
           <template slot="title">
-            <img class="navbar-avatar" :src="`http://api.test/public/files/${userInfos.avatar}`" />
-            {{ userInfos.username }}
+            <img v-if="user.avatar" class="navbar-avatar" :src="`http://api.test/public/files/${user.avatar}`"  :alt="`${user.username}'s avatar`"/>
+            {{ user.username }}
           </template>
           <el-menu-item index="1-1" route="/profile">Profile</el-menu-item>
           <el-menu-item index="1-2">Settings</el-menu-item>
@@ -57,7 +57,7 @@ export default {
     BellIcon
   },
   computed: mapState({
-    userInfos: state => state.session.userInfos
+    user: state => state.auth.user
   })
 };
 </script>

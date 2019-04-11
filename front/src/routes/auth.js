@@ -1,3 +1,4 @@
+import store from '@/store';
 import Login from '@/views/Login.vue';
 
 const routes = [
@@ -15,8 +16,8 @@ const routes = [
     meta: {
       auth: false
     },
-    beforeEnter: (to, from, next) => {
-      window.localStorage.clear();
+    beforeEnter: async (to, from, next) => {
+      await store.dispatch('auth/logout');
       next('/login');
     }
   }];

@@ -1,16 +1,3 @@
-register:
-    path: /register
-    controller: App\Controller\AuthController::register
-    methods: POST
-
-api:
-    path: /api/auth
-    controller: App\Controller\AuthController::api
-
-session:
-    path: /api/session
-    controller: App\Controller\AuthController::session
-
-login_check:
+api_login_check:
     path: /api/login_check
     methods: [POST]
