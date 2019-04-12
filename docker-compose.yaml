@@ -43,8 +43,6 @@ services:
   web:
     container_name: forge-web
     image: nginx:1.15-alpine
-    labels:
-      - "traefik.frontend.rule=Host:forge-api.test"
     depends_on:
       - php
     volumes:
@@ -67,15 +65,6 @@ services:
       - POSTGRES_PASSWORD=forge
     labels:
       - "traefik.frontend.rule=Host:db.forge.test"
-
-  composer:
-    container_name: forge-composer
-    image: composer:latest
-    working_dir: /home/forge-hr/api
-    depends_on:
-      - php
-    volumes:
-      - ./api/:/home/forge-hr/api
 
 volumes:
   db-data: {}

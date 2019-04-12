@@ -4,7 +4,7 @@ module.exports = {
     proxy: {
       '/api/*': {
         target: process.env.VUE_APP_BACKEND_API_URL,
-        pathRewrite: { '/api/': '' },
+        pathRewrite: { '^/api': '' },
         changeOrigin: true,
         ws: true,
         secure: false

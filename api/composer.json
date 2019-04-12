@@ -11,7 +11,8 @@
         "symfony/dotenv": "4.2.*",
         "symfony/flex": "^1.2",
         "symfony/framework-bundle": "4.2.*",
-        "symfony/yaml": "4.2.*"
+        "symfony/yaml": "4.2.*",
+        "vich/uploader-bundle": "^1.9"
     },
     "config": {
         "preferred-install": {
@@ -59,6 +60,7 @@
         }
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.1",
         "symfony/maker-bundle": "^1.11"
     }
 }
