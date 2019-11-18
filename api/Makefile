@@ -29,4 +29,7 @@ reset-dev:
 	@php bin/console doctrine:schema:update --force
 	@php bin/console doctrine:fixtures:load --quiet
 
+apidoc:
+	@php bin/console api:openapi:export --output=apidoc.json --no-interaction --ansi
+
 .PHONY: install build prepare dev start update-schema reset-db reset-dev

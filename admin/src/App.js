@@ -1,26 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Admin, Resource, ListGuesser } from 'react-admin';
+import apiProvider from 'ra-iri-jsonapi-client';
+import authProvider from './auth/authProvider';
+import { UserList } from './Resources/users';
+import { settings, httpClient } from './api/config';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const provider = apiProvider('http://api.forge.test/api', { ...httpClient, ... settings });
+
+const App = () => (
+    <Admin authProvider={authProvider} dataProvider={provider}>
+        <Resource name="users" list={UserList} />
+        <Resource name="invoices" list={ListGuesser} />
+        <Resource name="absences" list={ListGuesser} />
+    </Admin>
+);
 
 export default App;

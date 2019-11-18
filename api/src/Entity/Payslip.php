@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PayslipRepository")
@@ -18,18 +19,21 @@ class Payslip
 
     /**
      * @ORM\Column(type="date")
+     * @Groups({"read","write"})
      */
     private $date;
 
     /**
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
+     * @Groups({"read","write"})
      */
     private $owner;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\File")
      * @ORM\JoinColumn(nullable=true)
+     * @Groups({"read","write"})
      */
     private $file;
 

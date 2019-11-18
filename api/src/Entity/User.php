@@ -65,11 +65,13 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity="Absence", mappedBy="owner")
+     * @Groups({"read","write"})
      */
     public $absences;
 
     /**
      * @ORM\OneToMany(targetEntity="Invoice", mappedBy="owner")
+     * @Groups({"read","write"})
      */
     public $invoices;
 

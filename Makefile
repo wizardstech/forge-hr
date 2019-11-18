@@ -25,6 +25,8 @@ copy-env:
 	cp front/.env.dist front/.env
 	cp api/.env api/.env.local
 
+php-dev:
+	docker exec forge-php make reset-dev
 
 install: up
 	make install-php
@@ -42,5 +44,5 @@ install-admin:
 	docker exec forge-admin yarn install
 
 
-.PHONY: up down run sh-php sh-front sh-admin first-init copy-env install install-php install-admin install-front
+.PHONY: up down run sh-php sh-front sh-admin first-init copy-env install install-php php-dev install-admin install-front
 

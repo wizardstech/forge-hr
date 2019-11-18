@@ -17,6 +17,7 @@ All these commands preceded by ```make``` will excute the following actions :
 - *up* : start all the services
 - *down* : stop all the services
 - *run* : run all the services
+- *php-dev* : create dev env with fixture
 - *sh-php* : get inside the php container
 - *sh-front* : get inside the front container
 - *sh-admin* : get inside the admin container
@@ -35,7 +36,7 @@ If you want to be able to authentify on the api, you need to generate a RSA key 
 You need to run these 3 commands :
 
 ```sh
-docker-compose exec php -ti bash
+docker exec -ti forge-php sh
 openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
 openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
 ```

@@ -13,8 +13,7 @@
                 ],
                 "operationId": "getAbsenceCollection",
                 "produces": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "summary": "Retrieves the collection of Absence resources.",
                 "responses": {
@@ -51,12 +50,10 @@
                 ],
                 "operationId": "postAbsenceCollection",
                 "consumes": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "produces": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "summary": "Creates a Absence resource.",
                 "responses": {
@@ -92,8 +89,7 @@
                 ],
                 "operationId": "getAbsenceItem",
                 "produces": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "summary": "Retrieves a Absence resource.",
                 "parameters": [
@@ -122,12 +118,10 @@
                 ],
                 "operationId": "putAbsenceItem",
                 "consumes": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "produces": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "summary": "Replaces the Absence resource.",
                 "parameters": [
@@ -192,8 +186,7 @@
                 ],
                 "operationId": "getFileCollection",
                 "produces": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "summary": "Retrieves the collection of File resources.",
                 "responses": {
@@ -230,12 +223,10 @@
                 ],
                 "operationId": "postFileCollection",
                 "consumes": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "produces": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "summary": "Creates a File resource.",
                 "responses": {
@@ -271,8 +262,7 @@
                 ],
                 "operationId": "getFileItem",
                 "produces": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "summary": "Retrieves a File resource.",
                 "parameters": [
@@ -324,12 +314,10 @@
                 ],
                 "operationId": "putFileItem",
                 "consumes": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "produces": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "summary": "Replaces the File resource.",
                 "parameters": [
@@ -371,8 +359,7 @@
                 ],
                 "operationId": "getInvoiceCollection",
                 "produces": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "summary": "Retrieves the collection of Invoice resources.",
                 "responses": {
@@ -409,12 +396,10 @@
                 ],
                 "operationId": "postInvoiceCollection",
                 "consumes": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "produces": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "summary": "Creates a Invoice resource.",
                 "responses": {
@@ -450,8 +435,7 @@
                 ],
                 "operationId": "getInvoiceItem",
                 "produces": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "summary": "Retrieves a Invoice resource.",
                 "parameters": [
@@ -480,12 +464,10 @@
                 ],
                 "operationId": "putInvoiceItem",
                 "consumes": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "produces": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "summary": "Replaces the Invoice resource.",
                 "parameters": [
@@ -550,8 +532,7 @@
                 ],
                 "operationId": "getUserCollection",
                 "produces": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "summary": "Retrieves the collection of User resources.",
                 "responses": {
@@ -606,12 +587,10 @@
                 ],
                 "operationId": "postUserCollection",
                 "consumes": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "produces": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "summary": "Creates a User resource.",
                 "responses": {
@@ -647,8 +626,7 @@
                 ],
                 "operationId": "getUserItem",
                 "produces": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "summary": "Retrieves a User resource.",
                 "parameters": [
@@ -677,12 +655,10 @@
                 ],
                 "operationId": "putUserItem",
                 "consumes": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "produces": [
-                    "application\/json",
-                    "application\/ld+json"
+                    "application\/vnd.api+json"
                 ],
                 "summary": "Replaces the User resource.",
                 "parameters": [

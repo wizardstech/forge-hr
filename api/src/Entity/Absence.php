@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Traits\DateTrait;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AbsenceRepository")
  */
@@ -19,21 +21,25 @@ class Absence
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Groups({"read","write"})
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Groups({"read","write"})
      */
     private $status;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"read","write"})
      */
     private $startAt;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"read","write"})
      */
     private $endAt;
 

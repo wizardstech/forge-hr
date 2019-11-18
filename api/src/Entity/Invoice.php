@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\InvoiceRepository")
  */
@@ -13,6 +13,7 @@ class Invoice
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"read"})
      */
     private $id;
 
@@ -25,31 +26,37 @@ class Invoice
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\File")
      * @ORM\JoinColumn(nullable=true)
+     * @Groups({"read","write"})
      */
     private $file;
 
     /**
      * @ORM\Column(type="string")
+     * @Groups({"read","write"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"read","write"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups({"read","write"})
      */
     private $date;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"read","write"})
      */
     private $amount;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Groups({"read","write"})
      */
     private $status;
 
