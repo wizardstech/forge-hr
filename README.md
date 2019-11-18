@@ -14,18 +14,18 @@ It will copy .env.dist into working .env and install the project services at the
 
 All these commands preceded by ```make``` will excute the following actions :
 
-*up* : start all the services
-*down* : stop all the services
-*run* : run all the services
-*sh-php* : get inside the php container
-*sh-front* : get inside the front container
-*sh-admin* : get inside the admin container
-*first-init* : init the freshly cloned project
-*copy-env* : copy .env.dist into .env
-*install* : install every services
-*install-php* : install the php service
-*install-admin* : install the admin service
-*install-front* : install the front service
+- *up* : start all the services
+- *down* : stop all the services
+- *run* : run all the services
+- *sh-php* : get inside the php container
+- *sh-front* : get inside the front container
+- *sh-admin* : get inside the admin container
+- *first-init* : init the freshly cloned project
+- *copy-env* : copy .env.dist into .env
+- *install* : install every services
+- *install-php* : install the php service
+- *install-admin* : install the admin service
+- *install-front* : install the front service
 
 ## Authentification :
 
