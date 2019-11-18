@@ -7,18 +7,40 @@ down:
 run:
 	docker-compose up --build
 
-docker-install: docker-up
-	docker-compose run --rm composer composer install
-	docker-compose exec php bin/console doctrine:database:create
-	docker-compose exec php bin/console doctrine:schema:create
+sh-php:
+	docker exec -ti forge-php sh
 
-docker-update:
-	docker-compose exec php bin/console doctrine:schema:update --force
+sh-front:
+	docker exec -ti forge-front sh
 
-docker-test:
-	echo "FIXME: Implement tests"
+sh-admin:
+	docker exec -ti forge-admin sh
 
-docker-analysis:
-	echo "FIXME: Implement linting"
+first-init:
+	make up
+	make copy-env
+	make install
 
-.PHONY: up down run docker-install docker-update docker-test docker-analysis
+copy-env:
+	cp front/.env.dist front/.env
+	cp api/.env api/.env.local
+
+
+install: up
+	make install-php
+	make install-front
+	make install-admin
+
+install-php:
+	docker exec forge-php make install
+	docker exec forge-php make reset-dev
+
+install-front:
+	docker exec forge-front yarn install
+
+install-admin:
+	docker exec forge-admin yarn install
+
+
+.PHONY: up down run sh-php sh-front sh-admin first-init copy-env install install-php install-admin install-front
+
