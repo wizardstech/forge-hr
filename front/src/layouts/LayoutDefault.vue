@@ -18,9 +18,6 @@
     <el-menu-item route="/files"  index="4">
       My Files
     </el-menu-item>
-    <el-menu-item route="/users"  index="5">
-      Users
-    </el-menu-item>
     </el-menu>
   </el-aside>
   <el-container>

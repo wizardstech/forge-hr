@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import auth from '@/store/modules/auth';
+import absences from '@/store/modules/absences';
 import users from '@/api/users';
 import VuexPersist from 'vuex-persist';
 
@@ -20,7 +21,7 @@ const vueLocalStorage = new VuexPersist({
 export default new Vuex.Store({
   modules: {
     auth,
-    users
+    absences,
   },
   plugins: [vueLocalStorage.plugin]
 });

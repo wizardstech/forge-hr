@@ -6,6 +6,8 @@ api_platform:
     formats:
         jsonapi:
             mime_types: ['application/vnd.api+json']
+        json:
+            mime_types: ['application/json']
     enable_swagger_ui: true
     swagger:
         api_keys:
