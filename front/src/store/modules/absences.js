@@ -1,8 +1,8 @@
-import resourceApi from '@/api/absences'
+import resourceApi from '@/api/absences';
 
 const state = {
   absences: null,
-  absence: null,
+  absence: null
 };
 
 const getters = {
@@ -27,7 +27,7 @@ const actions = {
   async fetchAbsence ({ commit }, id) {
     const { data: absence } = await resourceApi.getAbsence(id);
     commit('setAbsences', absence);
-  },
+  }
 };
 
 export default {

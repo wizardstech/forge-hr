@@ -4,7 +4,7 @@ export default {
   getUsers () {
     return axios.get('/users');
   },
-  getUsers () {
+  getUser () {
     return axios.get('/user');
   }
 };

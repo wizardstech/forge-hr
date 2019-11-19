@@ -9,7 +9,7 @@ const instance = axios.create({
   timeout: DEFAULT_TIMEOUT,
   headers: {
     Accept: 'application/json',
-    "Content-Type": 'application/json'
+    'Content-Type': 'application/json'
   }
 });
 

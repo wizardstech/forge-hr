@@ -41,10 +41,10 @@ import { mapState, mapActions } from 'vuex';
 export default {
   name: 'Absences',
   computed: mapState({
-    absences: state => state.absences.absences,
+    absences: state => state.absences.absences
   }),
   methods: {
-    ...mapActions('absences',[
+    ...mapActions('absences', [
       'fetchAbsences'
     ]),
     handleEdit (index, row) {
