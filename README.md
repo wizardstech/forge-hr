@@ -31,7 +31,7 @@ All these commands preceded by ```make``` will excute the following actions :
 ## Authentification :
 
 
-If you want to be able to authentify on the api, you need to generate a RSA key to generate JWT tokens.
+If this is the first time you use this project & you want to be able to auth on the api, you need to generate a RSA key to generate JWT tokens.
 
 You need to run these 3 commands :
 
