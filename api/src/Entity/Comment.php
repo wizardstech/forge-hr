@@ -3,9 +3,16 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
+ *
+ * @ApiFilter(SearchFilter::class,
+ * properties = {
+ *      "owner.id": "exact",
+ * })
  */
 class Comment
 {

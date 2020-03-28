@@ -3,14 +3,18 @@
 namespace App\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
-use App\Entity\User;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\HttpKernel\Event\ViewEvent;
+use Doctrine\ORM\Mapping\ClassMetadata;
+use Doctrine\ORM\Query\Filter\SQLFilter;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use App\Entity\User;
 
-class UserInfoSubscriber implements EventSubscriberInterface
+final class OwnershipListener implements EventSubscriberInterface
 {
+
     private $tokenStorage;
 
     public function __construct(TokenStorageInterface $tokenStorage)
@@ -21,28 +25,21 @@ class UserInfoSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            KernelEvents::REQUEST => ['resolveMe', EventPriorities::PRE_READ],
+            KernelEvents::VIEW => ['handleOwnership', EventPriorities::PRE_WRITE],
         ];
     }
 
-    public function resolveMe(GetResponseEvent $event)
+    public function handleOwnership($event)
     {
-        $request = $event->getRequest();
 
-        if ('api_users_get_item' !== $request->attributes->get('_route')) {
-            return;
-        }
-
-        if ('me' !== $request->attributes->get('id')) {
-            return;
-        }
+        dd($event);
 
         $user = $this->tokenStorage->getToken()->getUser();
+
 
         if (!$user instanceof User) {
             return;
         }
 
-        $request->attributes->set('id', $user->getId());
     }
 }

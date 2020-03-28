@@ -5,17 +5,29 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Traits\DateTrait;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AbsenceRepository")
+ *
+ * @ApiFilter(SearchFilter::class,
+ * properties = {
+ *      "owner.id": "exact",
+ * })
  */
 class Absence
 {
+
+    const STATUS = ['pending', 'validated', 'refused', 'canceled'];
+    const TYPES = ['normal', 'illness', 'free'];
+
     use DateTrait;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"read"})
      */
     private $id;
 

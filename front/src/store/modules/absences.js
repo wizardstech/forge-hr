@@ -26,8 +26,16 @@ const actions = {
   },
   async fetchAbsence ({ commit }, id) {
     const { data: absence } = await resourceApi.getAbsence(id);
-    commit('setAbsences', absence);
-  }
+    commit('setAbsence', absence);
+  },
+  async putAbsence ({ commit }, id, resource) {
+    const { data: res } = await resourceApi.putAbsence(id, resource);
+    commit('setAbsence', res);
+  },
+  async postAbsence ({ commit }, resource) {
+    const { data: res } = await resourceApi.putAbsence(id, resource);
+    commit('setAbsence', res);
+  },
 };
 
 export default {

@@ -4,6 +4,10 @@
       empty-text="No data"
       :data="absences">
       <el-table-column
+        prop="id"
+        label="ID">
+      </el-table-column>
+      <el-table-column
         prop="type"
         label="Type">
       </el-table-column>
